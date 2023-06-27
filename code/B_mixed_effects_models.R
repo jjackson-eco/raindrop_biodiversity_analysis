@@ -4,7 +4,7 @@
 ##                                                ##
 ##           Total biodiversity models            ##
 ##                                                ##
-##                Nov 1st 2022                    ##
+##                  June 2023                     ##
 ##                                                ##
 ####################################################
 
@@ -13,9 +13,6 @@
 
 rm(list = ls())
 options(width = 100)
-
-## Change the .libPaths and R_LIBS_USER to the right thing if you're on a uni computer
-if(Sys.info()["nodename"] == "BIO-W-LT-000083") {.libPaths("C:/Users/zool2541/R-4.1.1/library/")}
 
 library(tidyverse)
 library(brms)

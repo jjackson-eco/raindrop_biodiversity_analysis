@@ -11,9 +11,6 @@
 rm(list = ls())
 options(width = 100)
 
-## Change the .libPaths and R_LIBS_USER to the right thing if you're on a uni computer
-if(Sys.info()["nodename"] == "BIO-W-LT-000083") {.libPaths("C:/Users/zool2541/R-4.1.1/library/")}
-
 # packages
 library(tidyverse)
 library(brms)
@@ -54,7 +51,7 @@ mod_comp_totbiomass %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS1.png")
+  save_as_image("output/SI/tableS1.png")
 
 ## table S2 - group-level biomass
 mod_comp_biomass %>%
@@ -64,7 +61,7 @@ mod_comp_biomass %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS2.png")
+  save_as_image("output/SI/tableS2.png")
 
 ## table S3 - temporal stability in biomass
 mod_comp_biomass_var %>%
@@ -74,7 +71,7 @@ mod_comp_biomass_var %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS3.png")
+  save_as_image("output/SI/tableS3.png")
 
 ## table S4 - Shannon index
 mod_comp_shannon %>%
@@ -84,7 +81,7 @@ mod_comp_shannon %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS4.png")
+  save_as_image("output/SI/tableS4.png")
 
 ## table S5 - Simpsons index
 mod_comp_simpsons %>%
@@ -94,7 +91,7 @@ mod_comp_simpsons %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS5.png")
+  save_as_image("output/SI/tableS5.png")
 
 ## table S6 - Richness
 mod_comp_richness %>%
@@ -104,7 +101,7 @@ mod_comp_richness %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS6.png")
+  save_as_image("output/SI/tableS6.png")
 
 ## table S7 - NMDS1
 mod_comp_nmds1 %>%
@@ -114,7 +111,7 @@ mod_comp_nmds1 %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS7.png")
+  save_as_image("output/SI/tableS7.png")
 
 ## table S8 - NMDS2
 mod_comp_nmds2 %>%
@@ -124,7 +121,7 @@ mod_comp_nmds2 %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS8.png")
+  save_as_image("output/SI/tableS8.png")
 
 ## table S9 - NMDS3
 mod_comp_nmds3 %>%
@@ -134,5 +131,5 @@ mod_comp_nmds3 %>%
                 `elpd error difference` = se_diff, `LOO information criterion` = looic) %>%
   flextable(cwidth = 1.5) %>%
   width(10, j = 2) %>%
-  save_as_image("output/manuscript_figures_jan2023/SI/tableS9.png")
+  save_as_image("output/SI/tableS9.png")
 

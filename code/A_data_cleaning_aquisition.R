@@ -4,7 +4,7 @@
 ##                                                ##
 ##          Data cleaning and aquisition          ##
 ##                                                ##
-##                Mar 9th 2022                    ##
+##                 March 2022                     ##
 ##                                                ##
 ####################################################
 
@@ -156,6 +156,7 @@ biomass <- bind_rows(biomass, biomass_2021)
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
 #### 4. Save ####
 
+### Full workflow here but data itself available on request
 save(biomass, percent_cover, file = "../../RainDropRobotics/Data/raindrop_biodiversity_2016_2021.RData")
 
 

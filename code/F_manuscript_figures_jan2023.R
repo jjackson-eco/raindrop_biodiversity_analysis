@@ -11,9 +11,6 @@
 rm(list = ls())
 options(width = 100)
 
-## Change the .libPaths and R_LIBS_USER to the right thing if you're on a uni computer
-if(Sys.info()["nodename"] == "BIO-W-LT-000083") {.libPaths("C:/Users/zool2541/R-4.1.1/library/")}
-
 # packages
 library(tidyverse)
 library(brms)
@@ -221,7 +218,7 @@ figS2 <- as.data.frame(brms::posterior_predict(biomass_treatment_group_int,
         strip.text = element_text(size = 11))
 figS2
 
-ggsave(figS2, filename = "output/manuscript_figures_jan2023/SI/figureS2.jpeg",
+ggsave(figS2, filename = "output/SI/figureS2.jpeg",
               width = 14, height = 19, units = "cm", dpi = 1500)
 
 ## 2c. Figure 1b. Temporal stability
@@ -256,7 +253,7 @@ fig1b <- as.data.frame(brms::posterior_predict(biomass_var_treat)) %>%
 fig1b
 
 ggsave(fig1a + fig1b,
-       filename = "output/manuscript_figures_jan2023/figure1.jpeg",
+       filename = "output/manuscript_figures/figure1.jpeg",
        width = 43, height = 20, units = "cm", dpi = 1500)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -338,7 +335,7 @@ CCDDD
 "
 
 ggsave(fig2a + fig2b + fig2c + fig2d + plot_layout(design = layout),
-       filename = "output/manuscript_figures_jan2023/figure2.jpeg",
+       filename = "output/manuscript_figures/figure2.jpeg",
        width = 38, height = 23, units = "cm", dpi = 1500)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -443,7 +440,7 @@ fig3c <- ggplot(predatsum_nmds, aes(x = year_s, y = value, colour = year_f)) +
   theme(panel.grid = element_blank())
 
 ggsave(fig3a + fig3b + fig3c,
-       filename = "output/manuscript_figures_jan2023/figure3.jpeg",
+       filename = "output/manuscript_figures/figure3.jpeg",
        width = 40, height = 12, units = "cm", dpi = 1500)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -500,26 +497,26 @@ fig4b <- top_species_perc %>%
         strip.background = element_blank())
 
 ggsave(fig4a + fig4b + plot_layout(widths = c(5,4)),
-       filename = "output/manuscript_figures_jan2023/figure4_simple.jpeg",
+       filename = "output/manuscript_figures/figure4_simple.jpeg",
        width = 43, height = 21, units = "cm", dpi = 1500)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
 #### 6. Accidental aRt ####
 
-accidental_Rt <- rd_scores %>%
-  ggplot(aes(x = MDS1, y = MDS2, colour = treatment, fill = treatment)) +
-  stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.3, level = 0.95, show.legend = F) +
-  stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.4, level = 0.75, show.legend = F) +
-  stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.5, level = 0.50, show.legend = F) +
-  stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.6, level = 0.25, show.legend = F) +
-  scale_colour_manual(values = raindrop_colours$colour, aesthetics = c("colour", "fill")) +
-  theme_void() +
-  theme(plot.background = element_rect(fill = "white"))
-
-ggsave(accidental_Rt, filename = "../accidental_aRt.pdf",
-       width = 20, height = 20, units = "cm")
-
-ggsave(accidental_Rt, filename = "../accidental_aRt.jpeg",
-       width = 10, height = 10, units = "cm", dpi = 1200)
+# accidental_Rt <- rd_scores %>%
+#   ggplot(aes(x = MDS1, y = MDS2, colour = treatment, fill = treatment)) +
+#   stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.3, level = 0.95, show.legend = F) +
+#   stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.4, level = 0.75, show.legend = F) +
+#   stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.5, level = 0.50, show.legend = F) +
+#   stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.6, level = 0.25, show.legend = F) +
+#   scale_colour_manual(values = raindrop_colours$colour, aesthetics = c("colour", "fill")) +
+#   theme_void() +
+#   theme(plot.background = element_rect(fill = "white"))
+# 
+# ggsave(accidental_Rt, filename = "../accidental_aRt.pdf",
+#        width = 20, height = 20, units = "cm")
+# 
+# ggsave(accidental_Rt, filename = "../accidental_aRt.jpeg",
+#        width = 10, height = 10, units = "cm", dpi = 1200)
 
 

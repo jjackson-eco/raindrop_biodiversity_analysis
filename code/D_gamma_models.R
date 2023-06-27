@@ -193,6 +193,6 @@ figS2a <- ggplot(totbiomass, aes(x = log_tot_biomass, fill = treatment)) +
 figS2a
 
 ggsave(figS2a + figS2b,
-       filename = "output/manuscript_figures_jan2023/SI/figureS2_gamma.jpeg",
+       filename = "output/SI/figureS2_gamma.jpeg",
        width = 35, height = 20, units = "cm", dpi = 1500)
 
