@@ -26,9 +26,6 @@ raindrop_colours <-
          num = rep(100,4),
          colour = c("#417A0B", "#BFBFBF", "#E69F00", "#6ECCFF"))
 
-
-##Figure names shifted down by 1!!
-
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
 #### 1. Load and wrangle data ####
 
@@ -144,7 +141,7 @@ rich_5m <- percent_cover %>%
 summary(rich_5m$richness)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
-#### 2. Figure 1 - Biomass reduction ####
+#### 2. Figure 2 - Biomass reduction ####
 
 load("data/totbiomass_models.RData", verbose = T)
 load("data/biomass_models.RData", verbose = T)
@@ -253,16 +250,16 @@ fig1b <- as.data.frame(brms::posterior_predict(biomass_var_treat)) %>%
 fig1b
 
 ggsave(fig1a + fig1b,
-       filename = "output/manuscript_figures/figure1.jpeg",
+       filename = "output/manuscript_figures/figure2.jpeg",
        width = 43, height = 20, units = "cm", dpi = 1500)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
-#### 3. Figure 2 - Community resistance to Drought in RainDrop ####
+#### 3. Figure 3 - Community resistance to Drought in RainDrop ####
 
 load("data/NMDS_results.RData")
 
-## fig 2a. Richness treatment
-fig2a <- ggplot(diversity, aes(x = treatment, y = richness)) +
+## fig 3a. Richness treatment
+fig3a <- ggplot(diversity, aes(x = treatment, y = richness)) +
   geom_violin(aes(fill = treatment), colour = "white",
               alpha = 0.7, trim = F, show.legend = F) +
   geom_jitter(aes(colour = treatment),
@@ -280,7 +277,7 @@ fig2a <- ggplot(diversity, aes(x = treatment, y = richness)) +
   theme(panel.grid = element_blank())
 
 ## fig 2b. Shannon-Weiner treatment
-fig2b <- ggplot(diversity, aes(x = treatment, y = shannon)) +
+fig3b <- ggplot(diversity, aes(x = treatment, y = shannon)) +
   geom_violin(aes(fill = treatment), colour = "white",
               alpha = 0.7, trim = F, show.legend = F) +
   geom_jitter(aes(colour = treatment),
@@ -297,7 +294,7 @@ fig2b <- ggplot(diversity, aes(x = treatment, y = shannon)) +
   theme(panel.grid = element_blank())
 
 ## fig 2c. Simpson's treatment
-fig2c <- ggplot(diversity, aes(x = treatment, y = simpsons)) +
+fig3c <- ggplot(diversity, aes(x = treatment, y = simpsons)) +
   geom_violin(aes(fill = treatment), colour = "white",
               alpha = 0.7, trim = F, show.legend = F) +
   geom_jitter(aes(colour = treatment),
@@ -315,7 +312,7 @@ fig2c <- ggplot(diversity, aes(x = treatment, y = simpsons)) +
   theme(panel.grid = element_blank())
 
 # treatment NMDS plot
-fig2d <- rd_scores %>%
+fig3d <- rd_scores %>%
   ggplot(aes(x = MDS1, y = MDS2, colour = treatment, fill = treatment)) +
   stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.4, level = 0.80, show.legend = F) +
   geom_point(alpha = 0.95, size = 7) +
@@ -334,12 +331,12 @@ BBDDD
 CCDDD
 "
 
-ggsave(fig2a + fig2b + fig2c + fig2d + plot_layout(design = layout),
-       filename = "output/manuscript_figures/figure2.jpeg",
+ggsave(fig3a + fig3b + fig3c + fig3d + plot_layout(design = layout),
+       filename = "output/manuscript_figures/figure3.jpeg",
        width = 38, height = 23, units = "cm", dpi = 1500)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
-#### 4. Figure 3 - Community composition robust but changing through time ####
+#### 4. Figure 4 - Community composition robust but changing through time ####
 
 load("data/NMDS_model_results.RData", verbose = TRUE)
 load("data/richness_models.RData")
@@ -373,7 +370,7 @@ for(i in 1:nrow(predatsum)){
 
 }
 
-fig3a <- ggplot(predatsum, aes(x = year_s, y = value)) +
+fig4a <- ggplot(predatsum, aes(x = year_s, y = value)) +
   geom_jitter(data = diversity, aes(y = richness),
               width = 0.04, size = 3, alpha = 0.9,
               colour = "lightsteelblue4") +
@@ -387,7 +384,7 @@ fig3a <- ggplot(predatsum, aes(x = year_s, y = value)) +
   theme(panel.grid = element_blank())
 
 # year NMDS plot
-fig3b <- rd_scores %>%
+fig4b <- rd_scores %>%
   ggplot(aes(x = MDS1, y = MDS2, colour = year_f, fill = year_f)) +
   stat_ellipse(aes(colour = NULL), geom = "polygon", alpha = 0.2, level = 0.80, show.legend = F) +
   geom_point(alpha = 0.9, size = 3) +
@@ -398,7 +395,7 @@ fig3b <- rd_scores %>%
   theme_bw(base_size = 17) +
   theme(panel.grid = element_blank())
 
-## fig 3c. NMDS1 increase over time
+## fig 4c. NMDS1 increase over time
 preddat_nmds1 <- expand_grid(year_s = seq(-1.5,1.5, length.out = 100),
                              treatment = unique(rd_scores$treatment),
                              block = unique(rd_scores$block),
@@ -425,7 +422,7 @@ for(i in 1:nrow(predatsum_nmds)){
 
 }
 
-fig3c <- ggplot(predatsum_nmds, aes(x = year_s, y = value, colour = year_f)) +
+fig4c <- ggplot(predatsum_nmds, aes(x = year_s, y = value, colour = year_f)) +
   geom_jitter(data = rd_scores, aes(y = MDS1),
               width = 0.04, size = 3, alpha = 0.8) +
   geom_smooth(stat = "identity", aes(ymax = upr, ymin = lwr,
@@ -439,12 +436,12 @@ fig3c <- ggplot(predatsum_nmds, aes(x = year_s, y = value, colour = year_f)) +
   theme_bw(base_size = 17) +
   theme(panel.grid = element_blank())
 
-ggsave(fig3a + fig3b + fig3c,
-       filename = "output/manuscript_figures/figure3.jpeg",
+ggsave(fig4a + fig4b + fig4c,
+       filename = "output/manuscript_figures/figure4.jpeg",
        width = 40, height = 12, units = "cm", dpi = 1500)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
-#### 5. Figure 4 - Species contributions to community dissimilarity over years ####
+#### 5. Figure 5 - Species contributions to community dissimilarity over years ####
 
 load("output/SIMPER_results.RData", verbose = TRUE)
 
@@ -458,7 +455,7 @@ yc <- year_cont %>%
   left_join(x  = ., y = pc_labs, by = "species")
 yc[16,"group"] <- "Grass"
 
-fig4a <- ggplot(yc, aes(y = reorder(species, -mean_contribution),
+fig5a <- ggplot(yc, aes(y = reorder(species, -mean_contribution),
                                         size = n_comparisons, colour = group)) +
   geom_segment(aes(x = mean_contribution, xend = median_contribution,
                    yend = species, size = NULL), show.legend = F, size = 1.4) +
@@ -476,7 +473,7 @@ fig4a <- ggplot(yc, aes(y = reorder(species, -mean_contribution),
         axis.text.y = element_text(face = "italic"))
 
 # most influential species time series
-fig4b <- top_species_perc %>%
+fig5b <- top_species_perc %>%
   mutate(species = factor(species,
                           levels = c("Arrhenatherum elatius",
                                      "Lotus corniculatus",
@@ -496,8 +493,8 @@ fig4b <- top_species_perc %>%
         strip.text = element_text(face = "italic"),
         strip.background = element_blank())
 
-ggsave(fig4a + fig4b + plot_layout(widths = c(5,4)),
-       filename = "output/manuscript_figures/figure4_simple.jpeg",
+ggsave(fig5a + fig5b + plot_layout(widths = c(5,4)),
+       filename = "output/manuscript_figures/figure5_simple.jpeg",
        width = 43, height = 21, units = "cm", dpi = 1500)
 
 ##____________________________________________________________________________________________________________________________________________________________________________________________________________
