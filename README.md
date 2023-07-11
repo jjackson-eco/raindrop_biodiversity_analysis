@@ -1,6 +1,6 @@
 # Analysis for 
 # _Experimental drought reduces the productivity and stability of a recovering calcareous grassland_
-#### Jackson, J., Middleton, S. L., Lawson, C. S., Haynes, J., Jardine, E., Hawes, N., Maseyk, K., Salguero-Gómez, R., & Hector, A.
+#### Jackson, J., Middleton, S. L., Lawson, C. S., Jardine, E., Hawes, N., Maseyk, K., Salguero-Gómez, R., & Hector, A.
 
 #### 2023-06-27
 #### Repository created by John Jackson
@@ -8,6 +8,8 @@
 ---
 
 [![DOI](https://zenodo.org/badge/659275253.svg)](https://zenodo.org/badge/latestdoi/659275253)
+
+Further acknowledgement for support of this study: Melanie Stone, David Gowing, Julia Haynes, Lara Clements, Laura McManus, Hannah King, David Encarnation, Abir Patwary, and Lauren Hinchcliffe.
 
 This directory contains scripts and analysis data for our work on the experimental manipulation of precipitation and its impact on biodiversity and productivity. For the manuscript please see {CHANGE} [the bioRxiv entry](https://www.biorxiv.org/content/10.1101/2022.03.08.483493v3). Package version info for this analysis is given below.
 
