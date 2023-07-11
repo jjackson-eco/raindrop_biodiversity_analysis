@@ -7,6 +7,8 @@
 
 ---
 
+[![DOI](https://zenodo.org/badge/659275253.svg)](https://zenodo.org/badge/latestdoi/659275253)
+
 This directory contains scripts and analysis data for our work on the experimental manipulation of precipitation and its impact on biodiversity and productivity. For the manuscript please see {CHANGE} [the bioRxiv entry](https://www.biorxiv.org/content/10.1101/2022.03.08.483493v3). Package version info for this analysis is given below.
 
 Analysis scripts can be found in the `code/` sub-repository, manuscript figures and output in the `output/` sub-repository, and analysis data in the `data/` sub-repository. Raw biodiversity data (which is part of a global network) is available on request from Andrew Hector.
